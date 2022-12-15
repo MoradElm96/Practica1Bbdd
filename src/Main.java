@@ -27,14 +27,24 @@ public class Main {
             String password = "";
             Connection con = DriverManager.getConnection(url, user, password);
             
+            //usamos la tabla instituto
             Statement st= con.createStatement();
             st.execute("use instituto");
             
             
             String crearTabla="CREATE TABLE `instituto`.`notasfinales` ( `MAT` VARCHAR(20) NOT NULL , `cod` INT(10) NOT NULL , `NotaMedia` INT(10) NOT NULL ) ENGINE = InnoDB;";
-            
+            //creamos la tabla
             PreparedStatement st1 = con.prepareStatement(crearTabla);
             st1.execute();
+            st1.close();
+            
+            Statement st2 = con.createStatement();
+            st2.execute("use notas");
+            
+            
+            
+            
+            
             st.close();
             
 
